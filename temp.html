@@ -5,11 +5,9 @@
 	$( document ).ready(function() {
 
 		var apiServer = 'https://query.yahooapis.com/v1/public/yql';
-	
-		var index = $(this).val();
 		var cityName = "Coronado";
-		
 		var queryString = 'select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + cityName + '")';
+		
 		$.ajax({
 			url: apiServer,
 			data: {
@@ -19,7 +17,6 @@
 			success: function(data) {
 		
 				var temp = data.query.results.channel.item.condition.temp;
-
 				console.log(temp);
 
 			}  // success
